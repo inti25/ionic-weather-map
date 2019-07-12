@@ -5,6 +5,8 @@ This repository is example application using Ionic 4 + Angular 7
  * init and show google maps, maker and window info using [Angular Google Maps](https://angular-maps.com/)
  * call backend api to get weather data using [Openweathermap API](https://openweathermap.org/api)
 
+<img src="https://raw.githubusercontent.com/inti25/weather-map/master/ScreenShot.png" height=600/>
+
 ## Installation
 
 Install dependencies
