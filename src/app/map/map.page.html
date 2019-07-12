@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Weather Map</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <agm-map
+          [latitude]="lat"
+          [longitude]="lng"
+          [zoom]="zoom"
+          [disableDefaultUI]="false"
+          [zoomControl]="false"
+          (mapClick)="mapClicked($event)">
+
+    <agm-marker
+            *ngFor="let m of markers; let i = index"
+            (markerClick)="clickedMarker(m.label, i)"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [label]="m.label"
+            [markerDraggable]="m.draggable"
+            (dragEnd)="markerDragEnd(m, $event)">
+
+      <agm-info-window>
+        <p class="title">{{m.weatherRes?.name}}</p>
+        <img src="http://openweathermap.org/img/wn/{{m.weatherRes?.weather[0].icon}}.png">
+        <p>{{m.weatherRes?.main.temp}}&#8451;</p>
+        <p>{{m.weatherRes?.weather[0].description}}</p>
+      </agm-info-window>
+
+    </agm-marker>
+
+    <!--<agm-circle [latitude]="lat + 0.3" [longitude]="lng"-->
+                <!--[radius]="5000"-->
+                <!--[fillColor]="'red'"-->
+                <!--[circleDraggable]="true"-->
+                <!--[editable]="true">-->
+    <!--</agm-circle>-->
+
+  </agm-map>
+</ion-content>
