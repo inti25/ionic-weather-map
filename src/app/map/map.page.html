@@ -19,6 +19,14 @@
             [latitude]="m.lat"
             [longitude]="m.lng"
             [label]="m.label"
+            [iconUrl]="
+              {
+                url:'./assets/icon/marker.png',
+                scaledSize: {
+                    width: 30,
+                    height: 30
+                }
+              }"
             [markerDraggable]="m.draggable"
             (dragEnd)="markerDragEnd(m, $event)">
 
