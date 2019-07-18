@@ -8,20 +8,44 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let item of listForecast; let i = index">
-    <ion-card-header style="font-weight: bold">{{item[0].dt_txt}}</ion-card-header>
-    <ion-card-content>
-      <div class="detailContent">
-        <div class="detailList">
-          <div class="detailItem" *ngFor="let f of item">
-            <p>{{f.dt_time}}</p>
-            <p style="width: 50px; height: 50px; margin: auto"
-            [ngStyle]="{'background-image': 'url(' + 'http://openweathermap.org/img/wn/' + f.weather[0].icon + '.png' + ')', 'background-size': 'cover'  }"></p>
-            <p>{{f.main.temp}}&#8451;</p>
-            <p>{{f.weather[0].description}}</p>
+  <div *ngIf="listForecast.length > 0">
+    <ion-card *ngFor="let item of listForecast; let i = index">
+      <ion-card-header style="font-weight: bold">{{item[0].dt_txt}}</ion-card-header>
+      <ion-card-content>
+        <div class="detailContent">
+          <div class="detailList">
+            <div class="detailItem" *ngFor="let f of item">
+              <p>{{f.dt_time}}</p>
+              <p style="width: 50px; height: 50px; margin: auto"
+                 [ngStyle]="{'background-image': 'url(' + 'http://openweathermap.org/img/wn/' + f.weather[0].icon + '.png' + ')', 'background-size': 'cover'  }"></p>
+              <p>{{f.main.temp}}&#8451;</p>
+              <p>{{f.weather[0].description}}</p>
+            </div>
           </div>
         </div>
-      </div>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!--skeleton loading-->
+  <div *ngIf="listForecast.length <= 0">
+    <ion-card *ngFor="let f of fakeData">
+      <ion-card-header>
+        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="detailContent">
+          <div class="detailList">
+            <div class="detailItem" *ngFor="let f2 of fakeData">
+              <p><ion-skeleton-text animated></ion-skeleton-text></p>
+              <ion-avatar slot="start">
+                <ion-skeleton-text style="width: 50px; height: 50px"></ion-skeleton-text>
+              </ion-avatar>
+              <p><ion-skeleton-text animated></ion-skeleton-text></p>
+              <p><ion-skeleton-text animated></ion-skeleton-text></p>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

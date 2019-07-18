@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {WeatherServiceService} from '../../service/weather-service.service';
 import {NavController} from '@ionic/angular';
 import {ActivatedRoute} from '@angular/router';
-import {ForeCastResponse, ListForeCast} from '../../model/weather-respone';
+import {City, ForeCastResponse, ListForeCast} from '../../model/weather-respone';
 import {from} from 'rxjs';
 import {flatMap, groupBy, map, mergeAll, mergeMap, toArray} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
@@ -22,9 +22,9 @@ export class FiveDayForecastPage implements OnInit {
   lat = 0;
   lng = 0;
 
-  forecastResponse: ForeCastResponse = {} as ForeCastResponse;
   listForecast: ListForeCast[][] = [];
-  city = {};
+  city: City = {} as City;
+  fakeData = [1, 2, 3, 4, 5];
 
   ngOnInit() {
     this.lat = + this.route.snapshot.paramMap.get('lat');
@@ -43,7 +43,6 @@ export class FiveDayForecastPage implements OnInit {
         groupBy((item: ListForeCast) => item.dt_txt),
         mergeMap(group => group.pipe(toArray()))
     ).subscribe(res => {
-      console.log('hungnq9', res);
       this.listForecast.push(res);
     });
   }
