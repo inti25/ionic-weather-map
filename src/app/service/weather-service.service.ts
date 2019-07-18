@@ -11,6 +11,14 @@ export class WeatherServiceService {
   constructor(private httpClient: HttpClient) { }
 
   getCurrentWeatherByLatLon(lat: number, lon: number) {
-    return this.httpClient.get(this.baseUrl + 'weather?appid=413b4f3fe224ebb24c6466edb0bdc76b&units=metric&lang=vi&lat=' + lat + '&lon=' + lon);
+    return this.httpClient.get(this.baseUrl
+        + 'weather?appid=413b4f3fe224ebb24c6466edb0bdc76b&units=metric&lang=vi&lat='
+        + lat + '&lon=' + lon);
+  }
+
+  getForeCastByLocation(lat: number, lon: number) {
+    return this.httpClient.get(this.baseUrl
+        + 'forecast?appid=413b4f3fe224ebb24c6466edb0bdc76b&units=metric&lang=vi&lat='
+        + lat + '&lon=' + lon);
   }
 }

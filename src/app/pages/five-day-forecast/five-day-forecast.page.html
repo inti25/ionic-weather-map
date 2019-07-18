@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{city?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of listForecast; let i = index">
+    <ion-card-header style="font-weight: bold">{{item[0].dt_txt}}</ion-card-header>
+    <ion-card-content>
+      <div class="detailContent">
+        <div class="detailList">
+          <div class="detailItem" *ngFor="let f of item">
+            <p>{{f.dt_time}}</p>
+            <p style="width: 50px; height: 50px; margin: auto"
+            [ngStyle]="{'background-image': 'url(' + 'http://openweathermap.org/img/wn/' + f.weather[0].icon + '.png' + ')', 'background-size': 'cover'  }"></p>
+            <p>{{f.main.temp}}&#8451;</p>
+            <p>{{f.weather[0].description}}</p>
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

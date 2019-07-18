@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AgmCoreModule} from '@agm/core';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import {AgmCoreModule} from '@agm/core';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

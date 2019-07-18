@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <agm-map
           [latitude]="lat"
           [longitude]="lng"
@@ -21,20 +21,23 @@
             [label]="m.label"
             [iconUrl]="
               {
-                url:'./assets/icon/marker.png',
+                url: m.iconUrl,
                 scaledSize: {
-                    width: 30,
-                    height: 30
+                    width: 40,
+                    height: 40
                 }
               }"
             [markerDraggable]="m.draggable"
             (dragEnd)="markerDragEnd(m, $event)">
 
       <agm-info-window>
-        <p class="title">{{m.weatherRes?.name}}</p>
-        <img src="http://openweathermap.org/img/wn/{{m.weatherRes?.weather[0].icon}}.png">
-        <p>{{m.weatherRes?.main.temp}}&#8451;</p>
-        <p>{{m.weatherRes?.weather[0].description}}</p>
+        <div class="infoContent">
+          <p class="title">{{m.weatherRes?.name}}</p>
+          <img src="{{m.iconUrl}}">
+          <p>{{m.weatherRes?.main.temp}}&#8451;</p>
+          <p>{{m.weatherRes?.weather[0].description}}</p>
+          <ion-button (click)="openFiveDayPage(m.lat, m.lng)" >5 Days Forecast</ion-button>
+          </div>
       </agm-info-window>
 
     </agm-marker>

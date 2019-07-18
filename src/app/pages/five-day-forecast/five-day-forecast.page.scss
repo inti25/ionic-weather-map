@@ -1,0 +1,13 @@
+.detailContent {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  .detailList {
+    height: 100%;
+    white-space: nowrap;
+    .detailItem {
+      display: inline-block;
+      margin: 5px 20px;
+      text-align: center;
+    }
+  }
+}

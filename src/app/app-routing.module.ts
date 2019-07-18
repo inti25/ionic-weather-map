@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './map/map.module#MapPageModule' }
+  { path: '', loadChildren: './pages/map/map.module#MapPageModule' },
+  { path: 'five-day-forecast/:lat/:lng', loadChildren: './pages/five-day-forecast/five-day-forecast.module#FiveDayForecastPageModule' }
 ];
 @NgModule({
   imports: [
